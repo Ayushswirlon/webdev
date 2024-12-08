@@ -1,0 +1,149 @@
+/* General Styles */
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #0d1117;
+  color: #c9d1d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  background-color: #161b22;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  width: 90%;
+  max-width: 420px;
+  padding: 25px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: #58a6ff;
+  margin-bottom: 20px;
+}
+
+/* Form Styles */
+form {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid #30363d;
+  border-radius: 8px;
+  background-color: #21262d;
+  color: #c9d1d9;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input::placeholder {
+  color: #8b949e;
+}
+
+input:focus {
+  border-color: #58a6ff;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #238636;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2ea043;
+}
+
+/* Expense List Styles */
+h2 {
+  font-size: 1.8rem;
+  color: #58a6ff;
+  margin: 20px 0 10px;
+  border-bottom: 2px solid #30363d;
+  display: inline-block;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+ul li {
+  background-color: #21262d;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #c9d1d9;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+ul li span {
+  flex-grow: 1;
+  text-align: left;
+  word-wrap: break-word;
+  font-size: 0.9rem;
+}
+
+ul li button {
+  border: none;
+  margin: 0px;
+  padding: 2px 4px; /* Minimal padding */
+  border-radius: 3px;
+  background-color: #d73a49;
+  color: #ffffff;
+  font-size: 0.6rem; /* Smaller font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0; /* Prevents the button from resizing */
+  text-align: center;
+  width: 30px; /* Fixed width for a consistent size */
+  height: 25px; /* Fixed height for consistent size */
+}
+
+ul li button:hover {
+  background-color: #a7323e;
+}
+
+/* Total Section */
+#total {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #21262d;
+  border-radius: 8px;
+}
+
+#total h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+#total-amount {
+  color: #58a6ff;
+  font-weight: bold;
+}

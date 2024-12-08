@@ -1,0 +1,117 @@
+/* General Styles */
+body {
+  font-family: "Georgia", serif;
+  background-color: #1e1e2f;
+  color: #e4e4eb;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align to the top of the page */
+  min-height: 100vh;
+  flex-direction: column; /* Stack items vertically */
+}
+
+/* Container Styles */
+#container {
+  background-color: #2a2a40;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+  margin-bottom: 20px; /* Space between input and blog list */
+}
+
+#container h1 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #f6c90e;
+  font-size: 1.8rem;
+}
+
+/* Input Field and Button */
+#blog-content {
+  width: calc(100% - 120px);
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #e4e4eb;
+  background-color: #3b3b53;
+  outline: none;
+}
+
+#blog-content::placeholder {
+  color: #b1b1c7;
+}
+
+#blog-submit {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #f6c90e;
+  color: #2a2a40;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+}
+
+#blog-submit:hover {
+  background-color: #e5b809;
+}
+
+/* Blog List */
+#blog-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+#blog-list li {
+  background-color: #2e2e4e;
+  border-radius: 6px;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #e4e4eb;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#blog-list li span {
+  flex: 1;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+#blog-list li button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  background-color: #f25c54;
+  color: #e4e4eb;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#blog-list li button:hover {
+  background-color: #c74442;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  #blog-content {
+    width: calc(100% - 100px);
+  }
+  #blog-submit {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
