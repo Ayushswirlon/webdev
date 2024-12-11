@@ -1,8 +1,8 @@
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
+const http = require("http"); //hypertext protocol for creating server
+const fs = require("fs"); //for accessing filesystem
+const path = require("path"); //for path
 
-const port = 3000;
+const port = 3000; //port
 
 const server = http.createServer((req, res) => {
   //getting the file path
@@ -24,8 +24,18 @@ const server = http.createServer((req, res) => {
 
   fs.readFile(filePath, (err, content) => {
     if (err) {
-      res.writeHead(404, { "Content-Type": "text/html" });
-      res.end();
+      if (err.code === "ENOENT") {
+        const errPath = path.join(__dirname, "/notfound.html");
+        fs.readFile(errPath, (err404, content404) => {
+          if (err404) {
+            res.writeHead(500, { "Content-Type": "text/html" });
+            res.end("<h1>500 - Internal Server Error</h1>");
+          } else {
+            res.writeHead(404, { "Content-Type": "text/html" });
+            res.end(content404, "utf-8");
+          }
+        });
+      }
     } else {
       res.writeHead(200, { "Content-Type": contentType });
       res.end(content, "utf-8");
