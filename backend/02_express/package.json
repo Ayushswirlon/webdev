@@ -1,0 +1,22 @@
+{
+  "name": "02_express",
+  "version": "1.0.0",
+  "description": "first express app",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "starting"
+  ],
+  "author": "ayush carpenter",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
