@@ -3,4 +3,3 @@ node_modules/
 dist/
 .parcel-cache/
 coverage/
-package-lock.json
