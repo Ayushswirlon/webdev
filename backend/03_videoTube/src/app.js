@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-
 const app = express(); //app created
 
 app.use(
@@ -18,8 +17,9 @@ app.use(express.static("public")); //serve static files
 
 //importing routes
 import healthcheckRouter from "./routes/healthcheck.routes.js";
+import userRouter from "./routes/user.routes.js";
 
 //implementing routes
 app.use("/api/v1/healthcheck", healthcheckRouter);
-
+app.use("/api/v1/users", userRouter);
 export default app;
