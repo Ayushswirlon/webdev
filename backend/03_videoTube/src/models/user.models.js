@@ -18,7 +18,7 @@ const userSchema = new Schema(
       unique: true,
       lowercase: true,
     },
-    fullName: {
+    fullname: {
       type: String,
       required: true,
       trim: true,
@@ -26,7 +26,6 @@ const userSchema = new Schema(
     },
     avatar: {
       type: String, //cloudinary url
-      required: true,
     },
     coverImage: {
       type: String, //cloudinary url
@@ -49,7 +48,7 @@ const userSchema = new Schema(
 );
 
 userSchema.pre("save", async function (next) {
-  if (!this.modified("password")) return next();
+  if (!this.isModified("password")) return next();
 
   this.password = bcrypt.hash(this.password, 10);
 

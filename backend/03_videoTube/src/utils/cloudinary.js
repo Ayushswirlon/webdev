@@ -1,7 +1,11 @@
 import cloudinary from "cloudinary";
+import fs from "fs";
+import dotenv from "dotenv";
 
-//config cloudinary
+// Load environment variables
+dotenv.config();
 
+// Configure Cloudinary
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -9,20 +13,49 @@ cloudinary.config({
 });
 
 const uploadOnCloudinary = async (localFilePath) => {
+  if (!localFilePath) {
+    console.error("Local file path is missing");
+    return { error: "Local file path is required" };
+  }
+
   try {
-    if (!localFilePath) return null;
+    // Upload the file to Cloudinary
     const response = await cloudinary.uploader.upload(localFilePath, {
       resource_type: "auto",
     });
-    console.log("file uploaded on cloudinary , file src: " + response.url);
-    //once file is uploaded , we would like to delete it from our server
-    fs.unlinkSync(localFilePath);
-  } catch (error) {
-    console.log("error on cloudinary", error);
+    console.log("File uploaded to Cloudinary:", response.url);
 
-    fs.unlinkSync(localFilePath);
+    // Delete the local file after upload
+    if (fs.existsSync(localFilePath)) {
+      fs.unlinkSync(localFilePath);
+    }
+
+    return response;
+  } catch (error) {
+    console.error("Error uploading to Cloudinary:", error.message);
+
+    // Attempt to delete the local file even if the upload fails
+    try {
+      if (fs.existsSync(localFilePath)) {
+        fs.unlinkSync(localFilePath);
+      }
+    } catch (unlinkError) {
+      console.error("Error deleting local file:", unlinkError.message);
+    }
+
+    // Return an error response
+    return { error: error.message };
+  }
+};
+
+const deleteOnCloudinary = async (publicId) => {
+  try {
+    const result = await cloudinary.uploader.destroy(publicId);
+    console.log("deleted from cloudinary, public id ", publicId);
+  } catch (error) {
+    console.log("error deleting from cloudinary", error);
     return null;
   }
 };
 
-export { uploadOnCloudinary };
+export { uploadOnCloudinary, deleteOnCloudinary };
